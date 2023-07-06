@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { getAllProduct, getProductByCategory, updateProduct, deleteProduct, createProduct, getProductByID } = require('../controller/product.controller');
+const { getAllProduct, getProductByCategory, updateProduct, deleteProduct, createProduct, getProductByID, filterProduct } = require('../controller/product.controller');
 
 const { verifyTokenByAdmin } = require('../middleware/verifyToken');
 
@@ -22,8 +22,8 @@ router.patch('/api/products/update/:id', verifyTokenByAdmin, updateProduct);
 router.delete('/api/products/delete/:id', verifyTokenByAdmin, deleteProduct);
 
 // USER
-router.post('/api/products/:category', getProductByCategory);
+router.post('/api/products/category/:category', getProductByCategory);
 
-// router.post('/users/logout', verifyToken, logout);
+router.post('/api/products/find', filterProduct);
 
 module.exports = router;

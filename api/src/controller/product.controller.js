@@ -10,6 +10,19 @@ exports.getAllProduct = async (req, res) => {
     }
 };
 
+exports.filterProduct = async (req, res) => {
+    try {
+        const { name } = req.body;
+        const products = await Product.find({
+            productName: { $regex: new RegExp(name, 'i') }
+        });
+        res.status(200).json({ products });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
+};
+
 exports.getProductByCategory = async (req, res) => {
     try {
         const products = await Product.find({ category: req.params.category });

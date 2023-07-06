@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = require('mongoose');
 
-const user = new Schema(
+const Feedback = new Schema(
     {
-        username: {
+        fullname: {
+            type: String,
+            require: true
+        },
+        phone: {
             type: String,
             require: true
         },
@@ -12,17 +16,9 @@ const user = new Schema(
             type: String,
             require: true
         },
-        phone: {
-            type: Number,
-            require: true
-        },
-        password: {
+        content: {
             type: String,
             require: true
-        },
-        isAdmin: {
-            type: Boolean,
-            default: false
         }
     },
     {
@@ -30,4 +26,4 @@ const user = new Schema(
     }
 );
 
-module.exports = mongoose.model('User', user);
+module.exports = mongoose.model('Feedback', Feedback);
