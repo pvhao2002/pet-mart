@@ -15,6 +15,12 @@ const bookingAPI = {
         console.log(err);
       });
   },
+  actionBooking: (id, status) => {
+    return axiosClient.put(`/booking/action`, {
+      id: id,
+      status: status,
+    });
+  },
 };
 
 export default bookingAPI;

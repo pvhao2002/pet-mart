@@ -29,6 +29,7 @@ function Booking() {
         ageAnimal,
         weightAnimal,
         note,
+        status: "Đang chờ",
       };
       console.log(item);
       bookingAPI.createBooking(item, navigate);
